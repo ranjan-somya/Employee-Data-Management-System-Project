@@ -1,0 +1,533 @@
+.footer{
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+/* ===== Employee list styles: paste at the bottom of your App.css ===== */
+
+:root {
+  --emp-ink: #12263a;
+  --emp-soft: #5b6b7b;
+  --emp-paper: #eef4f3;
+  --emp-line: #dde7e5;
+  --emp-teal: #0f766e;
+  --emp-teal-dark: #0b5a54;
+  --emp-amber: #f59e0b;
+  --emp-rose: #d6455d;
+}
+
+body {
+  background: var(--emp-paper);
+}
+
+.emp-container {
+  max-width: 1100px;
+  padding: 32px 16px 56px;
+  color: var(--emp-ink);
+}
+
+/* ---------- Title ---------- */
+.emp-title {
+  margin-bottom: 20px;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--emp-ink);
+}
+.emp-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 4px;
+  background: var(--emp-amber);
+}
+
+/* ---------- Add button ---------- */
+.emp-add-btn {
+  margin-bottom: 16px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--emp-teal);
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.15s;
+}
+.emp-add-btn:hover,
+.emp-add-btn:focus {
+  background: var(--emp-teal-dark);
+  color: #fff;
+}
+
+/* ---------- Table ---------- */
+.emp-table {
+  --bs-table-bg: #fff;
+  --bs-table-striped-bg: #f4f9f8;
+  --bs-table-accent-bg: transparent;
+  width: 100%;
+  margin-bottom: 0;
+  border: 1px solid var(--emp-line);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(18, 38, 58, 0.12);
+}
+
+.emp-table > thead > tr > th {
+  padding: 14px 16px;
+  border: 0;
+  border-bottom: 2px solid var(--emp-teal);
+  background: var(--emp-ink);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.emp-table > tbody > tr > td {
+  padding: 14px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--emp-line);
+  vertical-align: middle;
+  background: #fff;
+  color: var(--emp-ink);
+  box-shadow: none;
+}
+.emp-table > tbody > tr:nth-of-type(even) > td {
+  background: #f4f9f8;
+}
+.emp-table > tbody > tr:hover > td {
+  background: #e3f3f1;
+}
+.emp-table > tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+
+/* ---------- Action buttons ---------- */
+.emp-actions {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.emp-btn-update,
+.emp-btn-delete {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background-color 0.15s, color 0.15s;
+}
+.emp-btn-update {
+  margin-right: 8px;
+  background: #d9f0ed;
+  color: var(--emp-teal-dark);
+}
+.emp-btn-update:hover,
+.emp-btn-update:focus {
+  background: var(--emp-teal);
+  color: #fff;
+}
+.emp-btn-delete {
+  background: #fbe3e8;
+  color: #a3243a;
+}
+.emp-btn-delete:hover,
+.emp-btn-delete:focus {
+  background: var(--emp-rose);
+  color: #fff;
+}
+
+.emp-add-btn:focus-visible,
+.emp-btn-update:focus-visible,
+.emp-btn-delete:focus-visible {
+  outline: 3px solid var(--emp-amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Tablet: hide email column ---------- */
+@media (max-width: 860px) {
+  .emp-table > thead > tr > th:nth-child(5),
+  .emp-table > tbody > tr > td:nth-child(5) {
+    display: none;
+  }
+}
+
+/* ---------- Mobile: each row becomes a card ---------- */
+@media (max-width: 640px) {
+  .emp-container {
+    padding: 20px 12px 40px;
+  }
+  .emp-add-btn {
+    width: 100%;
+  }
+
+  .emp-table {
+    display: block;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .emp-table > thead {
+    display: none;
+  }
+  .emp-table > tbody {
+    display: block;
+  }
+
+  .emp-table > tbody > tr {
+    display: block;
+    margin-bottom: 14px;
+    padding: 6px 16px 14px;
+    border: 1px solid var(--emp-line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(18, 38, 58, 0.1);
+  }
+
+  .emp-table > tbody > tr > td,
+  .emp-table > tbody > tr:nth-of-type(even) > td,
+  .emp-table > tbody > tr:hover > td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--emp-line);
+    background: transparent;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  /* email column is visible again on mobile */
+  .emp-table > tbody > tr > td:nth-child(5) {
+    display: flex;
+  }
+
+  /* labels (no JSX change needed) */
+  .emp-table > tbody > tr > td::before {
+    flex: none;
+    color: var(--emp-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  .emp-table > tbody > tr > td:nth-child(1)::before { content: "Employee Id"; }
+  .emp-table > tbody > tr > td:nth-child(2)::before { content: "Name"; }
+  .emp-table > tbody > tr > td:nth-child(3)::before { content: "Department"; }
+  .emp-table > tbody > tr > td:nth-child(4)::before { content: "Salary"; }
+  .emp-table > tbody > tr > td:nth-child(5)::before { content: "Email"; }
+
+  .emp-table > tbody > tr > td.emp-actions {
+    display: flex;
+    gap: 10px;
+    padding: 14px 0 0;
+    border-bottom: 0;
+  }
+  .emp-table > tbody > tr > td.emp-actions::before {
+    display: none;
+  }
+  .emp-actions .btn {
+    flex: 1;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emp-add-btn,
+  .emp-btn-update,
+  .emp-btn-delete {
+    transition: none;
+  }
+}
+
+/* ===== Employee form styles: paste at the bottom of your App.css ===== */
+/* (same colour variables as the list page; safe to keep both copies) */
+:root {
+  --emp-ink: #12263a;
+  --emp-soft: #5b6b7b;
+  --emp-paper: #eef4f3;
+  --emp-line: #dde7e5;
+  --emp-teal: #0f766e;
+  --emp-teal-dark: #0b5a54;
+  --emp-amber: #f59e0b;
+  --emp-rose: #d6455d;
+}
+
+body {
+  background: var(--emp-paper);
+}
+
+.emp-form-page {
+  padding: 16px 16px 56px;
+  color: var(--emp-ink);
+}
+
+/* ---------- Card ---------- */
+.emp-form-page .emp-form-card {
+  padding: 0;
+  border: 1px solid var(--emp-line);
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(18, 38, 58, 0.12);
+}
+
+/* Title acts as the card header */
+.emp-form-title {
+  margin: 0;
+  padding: 18px 20px;
+  background: var(--emp-ink);
+  border-bottom: 4px solid var(--emp-amber);
+  color: #fff;
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.emp-form-body {
+  padding: 24px 24px 28px;
+}
+
+/* ---------- Fields ---------- */
+.emp-form-body .form-group {
+  margin-bottom: 16px !important;
+}
+
+.emp-form-body .form-label {
+  margin-bottom: 6px;
+  color: var(--emp-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.emp-form-body .form-control {
+  padding: 11px 14px;
+  border: 1px solid #c9d8d5;
+  border-radius: 10px;
+  background: #f8fbfa;
+  color: var(--emp-ink);
+  font-size: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+.emp-form-body .form-control::placeholder {
+  color: #8a9aa8;
+}
+.emp-form-body .form-control:focus {
+  border-color: var(--emp-teal);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15);
+  outline: none;
+}
+
+/* Validation */
+.emp-form-body .form-control.is-invalid {
+  border-color: var(--emp-rose);
+  background-image: none;
+  padding-right: 14px;
+}
+.emp-form-body .form-control.is-invalid:focus {
+  box-shadow: 0 0 0 4px rgba(214, 69, 93, 0.15);
+}
+.emp-form-body .invalid-feedback {
+  margin-top: 6px;
+  color: #a3243a;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* hide number spinners for a cleaner salary field */
+.emp-form-body input[type="number"]::-webkit-outer-spin-button,
+.emp-form-body input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.emp-form-body input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ---------- Submit ---------- */
+.emp-submit-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--emp-teal);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.15s;
+}
+.emp-submit-btn:hover,
+.emp-submit-btn:focus {
+  background: var(--emp-teal-dark);
+  color: #fff;
+}
+.emp-submit-btn:focus-visible {
+  outline: 3px solid var(--emp-amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Tablet: give the card more width ---------- */
+@media (min-width: 768px) and (max-width: 991px) {
+  .emp-form-page .emp-form-card {
+    width: 76%;
+    margin-left: 12%;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 575px) {
+  .emp-form-page {
+    padding: 8px 12px 40px;
+  }
+  .emp-form-page .row {
+    margin-top: 1rem !important;
+  }
+  .emp-form-body {
+    padding: 18px 16px 22px;
+  }
+  .emp-form-body .form-control {
+    font-size: 16px; /* stops iOS zooming into the field */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emp-form-body .form-control,
+  .emp-submit-btn {
+    transition: none;
+  }
+}
+
+/* ===== Header + Footer styles: paste at the bottom of your App.css ===== */
+:root {
+  --emp-ink: #12263a;
+  --emp-soft: #5b6b7b;
+  --emp-paper: #eef4f3;
+  --emp-line: #dde7e5;
+  --emp-teal: #0f766e;
+  --emp-teal-dark: #0b5a54;
+  --emp-amber: #f59e0b;
+  --emp-rose: #d6455d;
+}
+
+/* ---------- Page layout: footer stays at the bottom ---------- */
+/* This also cancels the default Vite #root rules (max-width, padding, centered text) */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+body {
+  margin: 0;
+  background: var(--emp-paper);
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar.app-navbar {
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: linear-gradient(90deg, #0d1c2c 0%, var(--emp-ink) 60%, #17405a 100%) !important;
+  border-bottom: 3px solid var(--emp-amber) !important;
+  box-shadow: 0 4px 18px rgba(18, 38, 58, 0.25);
+}
+
+.app-navbar .app-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1rem, 3.2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: normal;
+  transition: color 0.15s;
+}
+.app-navbar .app-brand:hover {
+  color: var(--emp-amber);
+}
+
+/* Logo mark drawn with CSS, no extra markup needed */
+.app-navbar .app-brand::before {
+  content: "E";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--emp-teal);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35);
+}
+
+.app-navbar .app-brand:focus-visible {
+  outline: 3px solid var(--emp-amber);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ---------- Footer ---------- */
+.footer.app-footer {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+  padding: 18px 16px;
+  background: var(--emp-ink);
+  border-top: 3px solid var(--emp-teal);
+  color: #a9c1c0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+}
+.app-footer span {
+  display: inline-block;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 575px) {
+  .navbar.app-navbar {
+    padding: 12px 14px;
+  }
+  .app-navbar .app-brand::before {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .footer.app-footer {
+    padding: 16px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-navbar .app-brand {
+    transition: none;
+  }
+}
